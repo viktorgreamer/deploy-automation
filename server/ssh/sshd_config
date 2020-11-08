@@ -1,0 +1,2 @@
+# enable root access
+PermitRootLogin yes
