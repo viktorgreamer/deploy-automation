@@ -6,8 +6,6 @@ services:
       args:
          - LOGIN=${LOGIN}
          - PASSWORD=${PASSWORD}
-    volumes:
-    - ./ssh/sshd_config:/etc/ssh/sshd_config
     networks:
       vpcbr:
         ipv4_address: 10.5.0.3
@@ -17,11 +15,18 @@ services:
       args:
          - LOGIN=${LOGIN}
          - PASSWORD=${PASSWORD}
-    volumes:
-    - ./ssh/sshd_config:/etc/ssh/sshd_config
     networks:
       vpcbr:
         ipv4_address: 10.5.0.4
+  ansible:
+    build:
+      context: ./ansible/
+    tty: true
+    volumes:
+      - ./ansible:/home/ansible
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
 networks:
   vpcbr:
     driver: bridge

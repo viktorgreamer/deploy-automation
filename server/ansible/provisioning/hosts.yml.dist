@@ -1,7 +1,7 @@
 all:
   hosts:
     server1:
-      ansible_connecion: ssh
+      ansible_connection: ssh
       ansible_user: user
       ansible_host: localhost
       ansible_port: 2223

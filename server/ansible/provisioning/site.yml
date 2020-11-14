@@ -1,0 +1,12 @@
+---
+ - hosts: all
+   remote_user: user
+   tasks:
+    # - include_tasks: ./tasks/setup_docker.yml
+     - include_tasks: ./tasks/nginx.yml
+     - include_tasks: ./tasks/sync.yml
+   handlers:
+     - name: restart nginx
+       service:
+         name: nginx
+         state: restarted
